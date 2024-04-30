@@ -1,15 +1,16 @@
 {
-  // JavaScript 💩
+  // JavaScript
   function jsAdd(num1, num2) {
     return num1 + num2;
   }
 
-  // TypeScript ✨
+  // TypeScript
+  // 좀더 디테일하게 타입(number)을 지정하면서 에러를 줄여준다.
   function add(num1: number, num2: number): number {
     return num1 + num2;
   }
 
-  // JavaScript 💩
+  // JavaScript
   function jsFetchNum(id) {
     // code ...
     // code ...
@@ -19,7 +20,7 @@
     });
   }
 
-  // TypeScript ✨
+  // TypeScript
   function fetchNum(id: string): Promise<number> {
     // code ...
     // code ...
@@ -29,21 +30,22 @@
     });
   }
 
-  // JavaScript ✨ => TypeScript
+  // JavaScript  => TypeScript
   // Optional parameter
+  // ? 값이 있으면 전달 되고 없다면 전달 안해도 된다.
   function printName(firstName: string, lastName?: string) {
     console.log(firstName);
-    console.log(lastName); // undefined
+    console.log(lastName);
   }
-  printName('Steve', 'Jobs');
-  printName('Ellie');
-  printName('Anna');
+  printName("Steve", "Jobs");
+  printName("Ellie");
+  printName("Anna");
 
   // Default parameter
-  function printMessage(message: string = 'default message') {
+  function printMessage(message: string = "default message") {
     console.log(message);
   }
-  printMessage();
+  printMessage(); // default message
 
   // Rest parameter
   function addNumbers(...numbers: number[]): number {
