@@ -2,10 +2,10 @@
   /* Union Types: OR */
 
   type Direction = "left" | "right" | "up" | "down";
-  function move(direction: Direction) {
+  function moves(direction: Direction) {
     console.log(direction);
   }
-  move("down"); // 'left' 'right' 'up' 'down' 중 하나만 사용할 수 있다.
+  moves("down"); // 'left' 'right' 'up' 'down' 중 하나만 사용할 수 있다.
 
   type TileSize = 8 | 16 | 32;
   const tile: TileSize = 16;

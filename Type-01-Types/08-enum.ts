@@ -26,7 +26,6 @@
   console.log(Days.Monday);
   let day: Days = Days.Saturday;
   day = Days.Tuesday;
-  day = 10;
   console.log(day);
 
   let dayOfweek: DaysOfWeek = "Monday";

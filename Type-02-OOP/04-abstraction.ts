@@ -7,6 +7,12 @@
     makeCoffee(shots: number): CoffeeCup;
   }
 
+  interface CommercialCoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+    fillCoffeeBeans(beans: number): void;
+    clean(): void;
+  }
+
   class CoffeeMachine implements CoffeeMaker {
     private static BEANS_GRAMM_PER_SHOT: number = 7;
     private coffeeBeans: number = 0;
@@ -24,6 +30,10 @@
         throw new Error("value for beans must be greater than 0");
       }
       this.coffeeBeans += beans;
+    }
+
+    clean() {
+      console.log("cleaning the machine...");
     }
 
     private grindBeans(shots: number) {
@@ -55,8 +65,13 @@
   const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
   maker.fillCoffeeBeans(32);
   maker.makeCoffee(2);
-  2;
-  const maker2: CoffeeMaker = CoffeeMachine.makeMachine(32);
-  // maker2.fillCoffeeBeans(32);  <- 인터페이스 안에 관련 함수가 없기 때문에 사용할 수없다
+
+  const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
+  maker2.fillCoffeeBeans(32);
   maker2.makeCoffee(2);
+  maker2.clean();
+
+  const maker3: CoffeeMaker = CoffeeMachine.makeMachine(32);
+  // maker2.fillCoffeeBeans(32);  <- 인터페이스 안에 관련 함수가 없기 때문에 사용할 수없다
+  maker3.makeCoffee(2);
 }
