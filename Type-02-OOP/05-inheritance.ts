@@ -13,7 +13,7 @@
     clean(): void;
   }
 
-  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
+  class CoffeeMachine implements CoffeeMaker {
     private static BEANS_GRAMM_PER_SHOT: number = 7;
     private coffeeBeans: number = 0;
 
@@ -81,18 +81,7 @@
   }
 
   const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
-  // maker.fillCoffeeBeans(32);
-  // maker.makeCoffee(2);
   const amateur = new AmateurUser(maker);
   const pro = new ProBarista(maker);
   pro.makeCoffee();
-
-  // const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
-  // maker2.fillCoffeeBeans(32);
-  // maker2.makeCoffee(2);
-  // maker2.clean();
-
-  // const maker3: CoffeeMaker = CoffeeMachine.makeMachine(32);
-  // // maker2.fillCoffeeBeans(32);  <- 인터페이스 안에 관련 함수가 없기 때문에 사용할 수없다
-  // maker3.makeCoffee(2);
 }
