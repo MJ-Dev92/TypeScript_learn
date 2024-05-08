@@ -57,6 +57,9 @@
   }
 
   class CoffeLatteMachine extends CoffeeMachine {
+    constructor(beans: number, public readonly serialNumber: string) {
+      super(beans);
+    }
     private steamMilk(): void {
       console.log("Steam some milk...");
     }
@@ -70,7 +73,8 @@
     }
   }
 
-  const latteMachine = new CoffeLatteMachine(23);
+  const latteMachine = new CoffeLatteMachine(23, "SSSS");
   const coffee = latteMachine.makeCoffee(1);
   console.log(coffee);
+  console.log(latteMachine.serialNumber);
 }
