@@ -11,7 +11,7 @@
     private static BEANS_GRAMM_PER_SHOT: number = 7;
     private coffeeBeans: number = 0;
 
-    private constructor(coffeeBeans: number) {
+    constructor(coffeeBeans: number) {
       this.coffeeBeans = coffeeBeans;
     }
 
@@ -55,4 +55,22 @@
       return this.extract(shots);
     }
   }
+
+  class CoffeLatteMachine extends CoffeeMachine {
+    private steamMilk(): void {
+      console.log("Steam some milk...");
+    }
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots);
+      this.steamMilk();
+      return {
+        ...coffee,
+        hasMilk: true,
+      };
+    }
+  }
+
+  const latteMachine = new CoffeLatteMachine(23);
+  const coffee = latteMachine.makeCoffee(1);
+  console.log(coffee);
 }
