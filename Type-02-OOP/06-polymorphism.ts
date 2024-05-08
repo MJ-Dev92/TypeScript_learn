@@ -1,7 +1,8 @@
 {
   type CoffeeCup = {
     shots: number;
-    hasMilk: boolean;
+    hasMilk?: boolean;
+    hasSugar?: boolean;
   };
   interface CoffeeMaker {
     makeCoffee(shots: number): CoffeeCup;
@@ -35,6 +36,7 @@
         throw new Error("Not enough coffee beans!");
       }
       this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
+      console.log("griding beans for 1");
     }
 
     private preheat(): void {
@@ -57,6 +59,9 @@
   }
 
   class CoffeLatteMachine extends CoffeeMachine {
+    constructor(beans: number, public readonly serialNumber: string) {
+      super(beans);
+    }
     private steamMilk(): void {
       console.log("Steam some milk...");
     }
@@ -70,7 +75,27 @@
     }
   }
 
-  const latteMachine = new CoffeLatteMachine(23);
-  const coffee = latteMachine.makeCoffee(1);
-  console.log(coffee);
+  class SugarCoffeMaker extends CoffeeMachine {
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots);
+      return {
+        ...coffee,
+        hasSugar: true,
+      };
+    }
+  }
+
+  const machine = [
+    new CoffeeMachine(16),
+    new CoffeLatteMachine(16, "AAAA"),
+    new SugarCoffeMaker(16),
+    new CoffeeMachine(16),
+    new CoffeLatteMachine(16, "AAAA"),
+    new SugarCoffeMaker(16),
+  ];
+
+  machine.forEach((machine) => {
+    console.log("----------------------------------------------------------");
+    machine.makeCoffee(1);
+  });
 }
