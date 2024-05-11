@@ -85,6 +85,8 @@
     }
   }
 
+  class SugarCaffeLatteMachine extends SugarCoffeMaker {}
+
   const machine: CoffeeMaker[] = [
     new CoffeeMachine(16),
     new CoffeLatteMachine(16, "AAAA"),
