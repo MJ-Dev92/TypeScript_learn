@@ -113,7 +113,20 @@
     }
   }
 
-  class SugarCaffeLatteMachine extends CoffeeMachine {}
+  class SugarCaffeLatteMachine extends CoffeeMachine {
+    constructor(
+      private beans: number,
+      private milk: CheapMilkSteamer,
+      private sugar: AutomaticSugarMixer
+    ) {
+      super(beans);
+    }
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots);
+      const sugarAdded = this.sugar.addSugar(coffee);
+      return this.milk.makeMilk(sugarAdded);
+    }
+  }
 
   const machine: CoffeeMaker[] = [
     new CoffeeMachine(16),
