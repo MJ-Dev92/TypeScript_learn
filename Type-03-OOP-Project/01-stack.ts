@@ -10,7 +10,7 @@ type StackNode = {
 };
 
 class StacjImpl implements Stack {
-  private _size: number;
+  private _size: number = 0;
   private head?: StackNode;
   get size() {
     return this._size;
