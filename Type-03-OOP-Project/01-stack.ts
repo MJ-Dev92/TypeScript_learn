@@ -9,18 +9,21 @@ type StackNode = {
   readonly next: StackNode | undefined;
 };
 
-class StacjImpl implements Stack {
+class StackImpl implements Stack {
   private _size: number = 0;
   private head?: StackNode;
+
   get size() {
     return this._size;
   }
-  push(value: string) {
+
+  push(value: string): void {
     const node: StackNode = { value, next: this.head };
     this.head = node;
     this._size++;
   }
-  pop(): string {
+
+  pop() {
     if (this.head == null) {
       throw new Error("Stack is empty");
     }
@@ -29,4 +32,12 @@ class StacjImpl implements Stack {
     this._size--;
     return node.value;
   }
+}
+
+const stack = new StackImpl();
+stack.push("bob");
+stack.push("MJ");
+stack.push("steve");
+while (stack.size !== 0) {
+  console.log(stack.pop());
 }
