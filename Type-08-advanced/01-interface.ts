@@ -15,6 +15,7 @@ const obj1: PositionType = {
 const obj2: PositionInterface = {
   x: 1,
   y: 1,
+  z: 1,
 };
 
 // class
@@ -48,4 +49,4 @@ type Person = {
 type Name = Person["name"]; // string
 
 type NumberType = number;
-type Direction = "right" | "left";
+type Direction = "Right" | "Left";
