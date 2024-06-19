@@ -5,9 +5,9 @@
     url: string;
     data: string;
   };
-  type VideoMetadata = Pick<Video, "id" | "title">;
+  type VideoMetadata = Omit<Video, "url" | "data">;
 
-  function getVideo1(id: string): Video {
+  function getVideo(id: string): Video {
     return {
       id,
       title: "video",
@@ -15,7 +15,7 @@
       data: "byte-data..",
     };
   }
-  function getVideoMetadata1(id: string): VideoMetadata {
+  function getVideoMetadata(id: string): VideoMetadata {
     return {
       id: id,
       title: "title",
